@@ -24,3 +24,8 @@ struct Weather: Codable {
     let icon: String
     let id: Int
 }
+
+extension WeatherModel {
+    static let MOCK_DATA: WeatherModel = WeatherModel(name: "Morelia", weather: [Weather(description: "algo de nubes", icon: "02d", id: 801)], main: Main(temp: 23.9, humidity: 68))
+                                                      
+}

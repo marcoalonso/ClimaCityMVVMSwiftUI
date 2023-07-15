@@ -19,7 +19,7 @@ class NetworkManager: NSObject {
     static let shared = NetworkManager()
     private let cache = NSCache<NSString, UIImage>()
     
-    static let baseURL = "https://api.openweathermap.org/data/2.5/weather?appid=698cb29c0a1e70d1a30a0a9982f6a95a&units=metric&lang=es"
+    static let baseURL = "https://api.openweathermap.org/data/2.5/weather?appid=698cb29c0a1e70d1a30a0a9982f6a95a&units=metric&lang=es&q="
     
     private override init() {}
     

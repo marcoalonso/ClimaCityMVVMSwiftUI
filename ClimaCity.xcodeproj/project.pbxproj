@@ -13,6 +13,9 @@
 		6CF869882A6212A0000AF470 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6CF869872A6212A0000AF470 /* Preview Assets.xcassets */; };
 		6CF8698F2A6212B1000AF470 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF8698E2A6212B1000AF470 /* NetworkManager.swift */; };
 		6CF869912A62134C000AF470 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF869902A62134C000AF470 /* WeatherModel.swift */; };
+		6CF869932A621453000AF470 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF869922A621453000AF470 /* WeatherViewModel.swift */; };
+		6CF869952A621735000AF470 /* AlertItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF869942A621735000AF470 /* AlertItem.swift */; };
+		6CF869992A621750000AF470 /* NewsRemoteImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF869982A621750000AF470 /* NewsRemoteImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,9 @@
 		6CF869872A6212A0000AF470 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		6CF8698E2A6212B1000AF470 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		6CF869902A62134C000AF470 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
+		6CF869922A621453000AF470 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		6CF869942A621735000AF470 /* AlertItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertItem.swift; sourceTree = "<group>"; };
+		6CF869982A621750000AF470 /* NewsRemoteImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsRemoteImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,8 +65,9 @@
 				6CF869822A62129F000AF470 /* ContentView.swift */,
 				6CF869842A6212A0000AF470 /* Assets.xcassets */,
 				6CF869862A6212A0000AF470 /* Preview Content */,
-				6CF8698E2A6212B1000AF470 /* NetworkManager.swift */,
-				6CF869902A62134C000AF470 /* WeatherModel.swift */,
+				6CF869972A621741000AF470 /* Utilities */,
+				6CF869962A621739000AF470 /* Model */,
+				6CF8699A2A6217FC000AF470 /* ViewModel */,
 			);
 			path = ClimaCity;
 			sourceTree = "<group>";
@@ -71,6 +78,32 @@
 				6CF869872A6212A0000AF470 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		6CF869962A621739000AF470 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6CF869902A62134C000AF470 /* WeatherModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6CF869972A621741000AF470 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				6CF869942A621735000AF470 /* AlertItem.swift */,
+				6CF8698E2A6212B1000AF470 /* NetworkManager.swift */,
+				6CF869982A621750000AF470 /* NewsRemoteImageView.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		6CF8699A2A6217FC000AF470 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				6CF869922A621453000AF470 /* WeatherViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,8 +176,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CF869932A621453000AF470 /* WeatherViewModel.swift in Sources */,
+				6CF869952A621735000AF470 /* AlertItem.swift in Sources */,
 				6CF8698F2A6212B1000AF470 /* NetworkManager.swift in Sources */,
 				6CF869832A62129F000AF470 /* ContentView.swift in Sources */,
+				6CF869992A621750000AF470 /* NewsRemoteImageView.swift in Sources */,
 				6CF869912A62134C000AF470 /* WeatherModel.swift in Sources */,
 				6CF869812A62129F000AF470 /* ClimaCityApp.swift in Sources */,
 			);
