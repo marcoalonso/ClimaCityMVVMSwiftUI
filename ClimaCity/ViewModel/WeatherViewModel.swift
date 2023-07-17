@@ -10,7 +10,7 @@ import SwiftUI
 
 
 class WeatherViewModel: ObservableObject {
-    @Published var weatherObject: WeatherModel = WeatherModel.MOCK_DATA
+    @Published var weatherObject: WeatherModel? //= WeatherModel.MOCK_DATA
     
     init() {
     }
