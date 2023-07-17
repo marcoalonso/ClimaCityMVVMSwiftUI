@@ -22,11 +22,17 @@ struct ContentView: View {
                 
                 VStack(spacing: 25.0) {
                     HStack(spacing: 20.0) {
-                        Image(systemName: "cloud")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 60, height: 60)
-                            .foregroundColor(.white)
+                    
+                        AsyncImage(url: URL(string: "https://openweathermap.org/img/wn/\(viewModel.weatherObject.weather[0].icon)@2x.png")) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                            
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        .frame(width: 120, height: 120)
+                        .shadow(radius: 12)
                         
                         HStack {
                             
@@ -70,11 +76,6 @@ struct ContentView: View {
                 .padding(.horizontal)
             }
             .navigationBarTitle("Weather", displayMode: .inline)
-            .navigationBarItems(trailing: Button(action: {
-                mostrarAlerta = true
-            }, label: {
-                Image(systemName: "location")
-            }))
         }
     }
 }
