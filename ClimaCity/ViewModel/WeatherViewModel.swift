@@ -6,13 +6,15 @@
 //
 
 import Foundation
+import SwiftUI
 
 
 class WeatherViewModel: ObservableObject {
     @Published var weatherObject: WeatherModel = WeatherModel.MOCK_DATA
-    @Published var alertItem: AlertItem?
     
-    init() { }
+    init() {
+        fetchWeather(city: "morelia")
+    }
     
     func fetchWeather(city: String) {
         NetworkManager.shared.fetchWeather(city: city) { [weak self] result in
@@ -22,22 +24,7 @@ class WeatherViewModel: ObservableObject {
                 case .success(let weather):
                     self.weatherObject = weather
                 case .failure(let error):
-                    switch error {
-                    case .invalidURL:
-                        self.alertItem = AlertContext.invalidURL
-                        
-                    case .decodingError:
-                        self.alertItem = AlertContext.decodingError
-                        
-                    case .invalidData:
-                        self.alertItem = AlertContext.invalidData
-                        
-                    case .invalidResponse:
-                        self.alertItem = AlertContext.invalidResponse
-                        
-                    case .unableToComplete:
-                        self.alertItem = AlertContext.unableToComplete
-                    }
+                    print("error: \(error.localizedDescription)")
                 }
             }//Dispatch
         }
