@@ -34,7 +34,7 @@ struct RemoteImage: View {
 }
 
 
-struct ArticleNewRemoteImage: View {
+struct WeatherIconRemoteImage: View {
     
     @StateObject private var imageLoader = ImageLoader()
     var urlString: String

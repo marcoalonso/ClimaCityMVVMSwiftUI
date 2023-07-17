@@ -21,16 +21,9 @@ struct ContentView: View {
                     HStack(spacing: 20.0) {
                         
                         if let iconUrl = viewModel.weatherObject?.weather[0].icon {
-                            AsyncImage(url: URL(string: "https://openweathermap.org/img/wn/\(iconUrl)@2x.png")) { image in
-                                image
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                
-                            } placeholder: {
-                                ProgressView()
-                            }
-                            .frame(width: 120, height: 120)
-                            .shadow(radius: 12)
+                            WeatherIconRemoteImage(urlString: "https://openweathermap.org/img/wn/\(iconUrl)@2x.png")
+                                .frame(width: 120, height: 120)
+                                .shadow(radius: 12)
                         }
                         
                         if let temp = viewModel.weatherObject?.main.temp {
