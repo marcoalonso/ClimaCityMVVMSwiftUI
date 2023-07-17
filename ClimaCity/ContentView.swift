@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct ContentView: View {
     @ObservedObject private var viewModel = WeatherViewModel()
     @State private var city = ""
+    @StateObject var locationDataManager = LocationDataManager()
+    @State private var mostrarAlerta = false
     
     var body: some View {
         NavigationStack {
@@ -47,6 +50,16 @@ struct ContentView: View {
                     
                     Spacer()
                 }
+                .onChange(of: locationDataManager.lastLocation, perform: { newValue in
+                    viewModel.fetchWeather(lat: newValue?.coordinate.latitude ?? 0.0,
+                                           lon: newValue?.coordinate.longitude ?? 0.0)
+                })
+                .onAppear{
+                    if locationDataManager.locationManager.authorizationStatus == .authorizedWhenInUse {
+                        viewModel.fetchWeather(lat: locationDataManager.locationManager.location?.coordinate.latitude ?? 0.0,
+                                               lon: locationDataManager.locationManager.location?.coordinate.latitude ?? 0.0)
+                    }
+                }
                 .searchable(text: $city, prompt: "Buscar ciudad o pais")
                 .onChange(of: city, perform: { newCity in
                     if city != "" && city.count > 3 {
@@ -57,7 +70,11 @@ struct ContentView: View {
                 .padding(.horizontal)
             }
             .navigationBarTitle("Weather", displayMode: .inline)
-            .navigationBarItems(trailing: Image(systemName: "location"))
+            .navigationBarItems(trailing: Button(action: {
+                mostrarAlerta = true
+            }, label: {
+                Image(systemName: "location")
+            }))
         }
     }
 }
@@ -67,3 +84,5 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+

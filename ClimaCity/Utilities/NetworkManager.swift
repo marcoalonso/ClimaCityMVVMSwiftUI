@@ -23,6 +23,41 @@ class NetworkManager: NSObject {
     
     private override init() {}
     
+    func fetchWeather(lat: Double, lon: Double, completed: @escaping (Result<WeatherModel, APError>) -> Void ) {
+        guard let url = URL(string: "\(NetworkManager.baseURL)&lat=\(lat)&lon=\(lon)") else {
+            completed(.failure(.invalidURL))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let _ = error {
+                completed(.failure(.unableToComplete))
+                return
+            }
+            
+            
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completed(.failure(.invalidResponse))
+                return
+            }
+            
+            guard let data = data else {
+                completed(.failure(.invalidData))
+                return
+            }
+            
+            do {
+                let decoder = JSONDecoder()
+                let decodedResponse = try decoder.decode(WeatherModel.self, from: data)
+                completed(.success(decodedResponse))
+            } catch {
+                print("Debug: decoding error \(error.localizedDescription)")
+                completed(.failure(.decodingError))
+            }
+        }
+        task.resume()
+    }
+    
     func fetchWeather(city: String, completed: @escaping (Result<WeatherModel, APError>) -> Void ) {
         guard let url = URL(string: NetworkManager.baseURL + city) else {
             completed(.failure(.invalidURL))

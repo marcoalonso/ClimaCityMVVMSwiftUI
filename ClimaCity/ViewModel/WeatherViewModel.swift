@@ -13,7 +13,20 @@ class WeatherViewModel: ObservableObject {
     @Published var weatherObject: WeatherModel = WeatherModel.MOCK_DATA
     
     init() {
-        fetchWeather(city: "morelia")
+    }
+    
+    func fetchWeather(lat: Double, lon: Double) {
+        NetworkManager.shared.fetchWeather(lat: lat, lon: lon) { [weak self] result in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let weather):
+                    self.weatherObject = weather
+                case .failure(let error):
+                    print("error: \(error.localizedDescription)")
+                }
+            }//Dispatch
+        }
     }
     
     func fetchWeather(city: String) {
