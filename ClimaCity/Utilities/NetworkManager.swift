@@ -5,7 +5,7 @@
 //  Created by Marco Alonso Rodriguez on 14/07/23.
 //
 
-import UIKit
+import SwiftUI
 
 enum APError: Error {
     case invalidURL
@@ -16,15 +16,24 @@ enum APError: Error {
 }
 
 class NetworkManager: NSObject {
+    @AppStorage("temperatureUnit") var temperatureUnit: TemperatureUnit = .celsius
     static let shared = NetworkManager()
     private let cache = NSCache<NSString, UIImage>()
+    var url: String = ""
     
-    static let baseURL = "https://api.openweathermap.org/data/2.5/weather?appid=698cb29c0a1e70d1a30a0a9982f6a95a&units=metric&lang=en&q="
+//    static let baseURL = "https://api.openweathermap.org/data/2.5/weather?appid=698cb29c0a1e70d1a30a0a9982f6a95a&units=metric&lang=en&q="
     
     private override init() {}
     
     func fetchWeather(lat: Double, lon: Double, completed: @escaping (Result<WeatherModel, APError>) -> Void ) {
-        guard let url = URL(string: "\(NetworkManager.baseURL)&lat=\(lat)&lon=\(lon)") else {
+        
+        if temperatureUnit.rawValue == "C" {
+            url = "https://api.openweathermap.org/data/2.5/weather?appid=698cb29c0a1e70d1a30a0a9982f6a95a&units=metric&lang=en&q="
+        } else {
+            url = "https://api.openweathermap.org/data/2.5/weather?appid=698cb29c0a1e70d1a30a0a9982f6a95a&units=imperial&lang=en&q="
+        }
+        
+        guard let url = URL(string: "\(url)&lat=\(lat)&lon=\(lon)") else {
             completed(.failure(.invalidURL))
             return
         }
@@ -59,7 +68,12 @@ class NetworkManager: NSObject {
     }
     
     func fetchWeather(city: String, completed: @escaping (Result<WeatherModel, APError>) -> Void ) {
-        guard let url = URL(string: NetworkManager.baseURL + city) else {
+        if temperatureUnit.rawValue == "C" {
+            url = "https://api.openweathermap.org/data/2.5/weather?appid=698cb29c0a1e70d1a30a0a9982f6a95a&units=metric&lang=en&q="
+        } else {
+            url = "https://api.openweathermap.org/data/2.5/weather?appid=698cb29c0a1e70d1a30a0a9982f6a95a&units=imperial&lang=en&q="
+        }
+        guard let url = URL(string: url + city) else {
             completed(.failure(.invalidURL))
             return
         }

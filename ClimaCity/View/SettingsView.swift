@@ -9,6 +9,7 @@ import SwiftUI
 import MessageUI
 
 struct SettingsView: View {
+    @StateObject private var viewModel = TemperatureViewModel()
     @State private var mostrarAlerta = false
     @AppStorage("isDarkModeOn") private var isDarkModeOn = false
     
@@ -23,6 +24,19 @@ struct SettingsView: View {
     var body: some View {
         VStack {
             Form {
+                // MARK:  Temperature Units
+                Section {
+                        Picker("Unit temperature", selection: $viewModel.temperatureUnit) {
+                            Text(TemperatureUnit.celsius.rawValue).tag(TemperatureUnit.celsius)
+                            Text(TemperatureUnit.fahrenheit.rawValue).tag(TemperatureUnit.fahrenheit)
+                        }
+                        .pickerStyle(SegmentedPickerStyle())
+                    
+                } header: {
+                    Text("Select temperature unit:")
+                }
+
+                
                 // MARK:  Contact
                 Section {
                     ///Call

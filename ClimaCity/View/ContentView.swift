@@ -15,6 +15,7 @@ struct ContentView: View {
     @State private var mostrarAlerta = false
     @State private var showConfigView = false
     @AppStorage("isDarkModeOn") private var isDarkModeOn = false
+    @AppStorage("temperatureUnit") var temperatureUnit: TemperatureUnit = .celsius
     
     var body: some View {
         NavigationStack {
@@ -39,8 +40,8 @@ struct ContentView: View {
                         
                         if let temp = viewModel.weatherObject?.main.temp {
                             HStack {
-                                Text(String(format: "%.1f",temp))
-                                Text("°C")
+                                Text(String(format: "%.2f",temp))
+                                Text(temperatureUnit.rawValue == "C" ? "°C" : "°F")
                             }
                             .font(.system(size: 50))
                             .fontWeight(.semibold)
