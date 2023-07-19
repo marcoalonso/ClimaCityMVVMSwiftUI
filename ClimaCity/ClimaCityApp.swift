@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct ClimaCityApp: App {
+    @AppStorage("isDarkModeOn") private var isDarkModeOn = false
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .preferredColorScheme(isDarkModeOn ? .dark : .light)
         }
     }
 }

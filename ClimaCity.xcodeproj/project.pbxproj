@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C1655502A68437D00B84D0F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C16554F2A68437D00B84D0F /* SettingsView.swift */; };
 		6C95FE322A650244009A23F8 /* LocationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C95FE312A650244009A23F8 /* LocationDataManager.swift */; };
 		6CF869812A62129F000AF470 /* ClimaCityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF869802A62129F000AF470 /* ClimaCityApp.swift */; };
 		6CF869832A62129F000AF470 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF869822A62129F000AF470 /* ContentView.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6C16554F2A68437D00B84D0F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		6C95FE312A650244009A23F8 /* LocationDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationDataManager.swift; sourceTree = "<group>"; };
 		6CF8697D2A62129F000AF470 /* ClimaCity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClimaCity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CF869802A62129F000AF470 /* ClimaCityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClimaCityApp.swift; sourceTree = "<group>"; };
@@ -42,6 +44,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6C1655512A684CB800B84D0F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6CF869822A62129F000AF470 /* ContentView.swift */,
+				6C16554F2A68437D00B84D0F /* SettingsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		6CF869742A62129F000AF470 = {
 			isa = PBXGroup;
 			children = (
@@ -62,7 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				6CF869802A62129F000AF470 /* ClimaCityApp.swift */,
-				6CF869822A62129F000AF470 /* ContentView.swift */,
+				6C1655512A684CB800B84D0F /* View */,
 				6CF869842A6212A0000AF470 /* Assets.xcassets */,
 				6CF869862A6212A0000AF470 /* Preview Content */,
 				6CF869972A621741000AF470 /* Utilities */,
@@ -181,6 +192,7 @@
 				6CF8698F2A6212B1000AF470 /* NetworkManager.swift in Sources */,
 				6CF869832A62129F000AF470 /* ContentView.swift in Sources */,
 				6CF869992A621750000AF470 /* NewsRemoteImageView.swift in Sources */,
+				6C1655502A68437D00B84D0F /* SettingsView.swift in Sources */,
 				6CF869912A62134C000AF470 /* WeatherModel.swift in Sources */,
 				6CF869812A62129F000AF470 /* ClimaCityApp.swift in Sources */,
 			);
@@ -320,6 +332,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -350,6 +363,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

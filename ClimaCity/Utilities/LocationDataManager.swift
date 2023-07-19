@@ -12,6 +12,7 @@ class LocationDataManager : NSObject, ObservableObject, CLLocationManagerDelegat
     var locationManager = CLLocationManager()
     @Published var authorizationStatus: CLAuthorizationStatus?
     @Published var lastLocation : CLLocation?
+    @Published var errorMessage: String?
     
     override init() {
         super.init()
